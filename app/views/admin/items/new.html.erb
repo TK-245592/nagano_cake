@@ -1,6 +1,9 @@
 <h1>商品新規登録</h1>
 
-<%= form_with model: @item, url: 'admin_items_path', methoud: :post do |f| %>
+<%= form_with model: @item, url: admin_items_path,  methoud: :post do |f| %>
+
+<p>ジャンル</p>
+<%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "選択してください"} %>
 
 <h3>画像</h3>
 <%= f.file_field :image, accept: 'image/*' %>
@@ -17,8 +20,6 @@
 <p>販売ステータス</p>
 <label><%= f.select :is_active, [["販売中", true], ["売り切れ", false]] %></label>
 
-<p>ジャンル</p>
-<%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "選択してください"} %>
 
 <h3><%= f.submit '保存' %><h3>
   
