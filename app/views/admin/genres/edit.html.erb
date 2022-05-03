@@ -5,3 +5,5 @@
 <%= f.text_field :name %>
 <%= f.submit '保存' %>
 <% end %>
+<%= link_to "ジャンル一覧", admin_genres_path %>
+<%= link_to "削除", admin_genre_path, method: :delete, "data-confirm" => "本当に削除しますか？" %>

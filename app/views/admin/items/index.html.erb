@@ -1,5 +1,4 @@
-<h1>商品一覧</h1>
-
+<h1>商品一覧</h1>>
 <% @items.each do |item| %>
 <h3>ジャンル名</h3>
 <%= item.genre.name %>
@@ -13,5 +12,5 @@
 <%= item.price %>
 <h3>販売ステータス</h3>
 <%= item.is_active %>
-
+<%= link_to "商品詳細", admin_item_path(item.id) %>
 <% end %>

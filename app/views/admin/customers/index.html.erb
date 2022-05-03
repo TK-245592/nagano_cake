@@ -1,0 +1,23 @@
+<h1>顧客一覧</h1>
+<% @customers.each do |customer| %>
+<p>会員ID</p>
+<%= customer.id %>
+<p>姓(カナ)</p>
+<%= customer.last_name_kana %>
+<p>姓</p>
+<%= customer.last_name %>
+<p>名(カナ)</p>
+<%= customer.first_name_kana %>
+<p>名</p>
+<%= customer.first_name %>
+<p>郵便番号</p>
+<%= customer.postal_code %>
+<p>住所</p>
+<%= customer.address %>
+<p>電話番号</p>
+<%= customer.telephone_number %>
+<p>顧客詳細</p>
+<%= link_to "顧客詳細", admin_customer_path(customer.id) %>
+<% end %>
+
+

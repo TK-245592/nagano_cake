@@ -13,4 +13,6 @@
 <%= f.select :is_active, [["販売中", true],["売り切れ", false]] %>
 <h3><%= f.submit '保存' %></h3>
 <% end %>
+<%= link_to "商品一覧", admin_items_path %>
+<%= link_to "削除", admin_item_path, method: :delete, "data-confirm" => "本当に削除しますか？" %>
 
