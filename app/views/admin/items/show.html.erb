@@ -1,5 +1,5 @@
 <h2>商品詳細</h2>
-<p>ジャンル名</p>
+<p>ジャンル</p>
 <%= @item.genre.name %>
 <p>商品画像</p>
 <%= image_tag @item.image, size: "200*200" %>
@@ -7,13 +7,8 @@
 <%= @item.name %>
 <p>商品説明</p>
 <%= @item.introduction %>
-<p>税抜き価格</p>
+<p>税込み価格(税抜き価格)</p>
 <%= @item.price %>
 <p>販売ステータス</p>
 <%= @item.is_active %>
-<p>登録日時</p>
-<%= @item.created_at.strftime('%Y/%m/%d') %>
-<p>更新日時</p>
-<%= @item.updated_at.strftime('%Y/%m/%d') %>
 <%= link_to "編集", edit_admin_item_path(@item.id) %>
-<%= link_to "削除", admin_item_path, method: :delete, "data-confirm" => "本当に削除しますか？" %>

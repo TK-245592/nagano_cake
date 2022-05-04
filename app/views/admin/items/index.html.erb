@@ -1,16 +1,14 @@
 <h1>商品一覧</h1>>
 <% @items.each do |item| %>
-<h3>ジャンル名</h3>
-<%= item.genre.name %>
-<h3>商品画像</h3>
-<%= image_tag item.image, size: "200*200" %>
+<P>商品ID</P>
+<%= item.id %>
 <h3>商品名</h3>
-<%= item.name %>
-<h3>商品説明</h3>
-<%= item.introduction %>
+<%= link_to item.name, admin_item_path(item.id) %>
 <h3>税抜き価格</h3>
 <%= item.price %>
+<h3>ジャンル</h3>
+<%= item.genre.name %>
 <h3>販売ステータス</h3>
 <%= item.is_active %>
-<%= link_to "商品詳細", admin_item_path(item.id) %>
 <% end %>
+<%= link_to "新規作成", new_admin_item_path %>

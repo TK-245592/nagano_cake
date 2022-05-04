@@ -34,6 +34,10 @@ class Admin::ItemsController < ApplicationController
     @item.destroy
     redirect_to admin_items_path
   end
+  
+  def add_tax_price
+  (self.price * 1.10).round
+  end
 
 
   private
@@ -41,5 +45,7 @@ class Admin::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :is_active, :image, :genre_id)
   end
+  
+  
 
 end
