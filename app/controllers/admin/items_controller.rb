@@ -34,12 +34,9 @@ class Admin::ItemsController < ApplicationController
     @item.destroy
     redirect_to admin_items_path
   end
+
+
   
-  def add_tax_price
-  (self.price * 1.10).round
-  end
-
-
   private
 
   def item_params

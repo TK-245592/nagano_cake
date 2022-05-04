@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    resources :items, only: [:index, :create, :new, :show, :edit, :update, :destroy, :add_tax_price]
+    resources :items, only: [:index, :create, :new, :show, :edit, :update, :destroy]
   end
   
   namespace :admin do
