@@ -1,0 +1,30 @@
+<h1>注文履歴詳細</h1>
+<P>購入者</P>
+<%= @order.customer.last_name %><%= @order.customer.first_name %>
+<p>注文日</p>
+<%= @order.created_at.strftime('%Y/%m/%d') %>
+<p>配送先</p>
+<%= @order.postal_cade %><%= @order.address %><%= @order.name %>
+<p>支払い方法</p>
+<%= @order.method_of_payment %>
+
+<%= form_with model: @order, url: admin_order_path, methoud :patch do |f| %>
+<p>注文ステータス</p>
+
+
+<% end %>
+<%= @order_details.each do |order_detail| %>
+<p>商品名</p>
+<%= order_detail.item.name %>
+<p>単価（税込）</p>
+<%= order_detail.price %>
+<p>数量</p>
+<%= order_detail.quantity %>
+<p>小計</p>
+
+<p>制作ステータス</p>
+<% end %>
+
+<p>商品合計</p><%= order_detail.all.sum(:price) %>円
+<p>送料</p>
+<p>請求金額合計</p>

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    resources :orders, only: [:show, :update]
+  end
+  namespace :admin do
+    get 'homes/top'
+  end
+  namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end
   
