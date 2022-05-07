@@ -1,27 +1,72 @@
-<h1>商品新規登録</h1>
+<main>
+  <div class="container text-center">
 
+<div class="text-center mt-5 col-lg-2">
+  <h4 class="text-black bg-secondary ">商品新規登録</h4>
+</div>
+
+<div lcass="container">
 <%= form_with model: @item, url: admin_items_path,  methoud: :post do |f| %>
 
-<h3>商品画像</h3>
+  
+<div class="form-grop mt-5">
+  <div class="row justify-content-start">
+<label for="image" class="col-sm-6">商品画像</label>
+<div class="">
 <%= f.file_field :image, accept: 'image/*' %>
+</div>
+</div>
+</div>
 
-<h3>商品名</h3>
+<div class="form-grop mt-3">
+  <div class="row justify-content-start">
+  <lavel for="name" class="col-sm-6">商品名</lavel>
+  <div class="">
 <%= f.text_field :name %>
+</div>
+</div>
+</div>
 
-<h3>商品説明</h3>
+<div class="form-grop mt-3">
+  <div class="row justify-content-start">
+     <lavel for="introduction" class="col-sm-6">商品説明</lavel>
+      <div class="">
 <%= f.text_area :introduction %>
+</div>
+</div>
+</div>
 
-<p>ジャンル</p>
+<div class="form-grop mt-3">
+   <div class="row justify-content-start">
+     <lavel for="renre" class="col-sm-6">ジャンル</lavel>
+      <div class="">
 <%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "選択してください"} %>
+</div>
+</div>
+</div>
 
-<p>税抜き価格</p>
+<div class="form-grop mt-3">
+   <div class="row justify-content-start">
+     <lavel for="price" class="col-sm-6">税抜き価格</lavel>
+      <div class="">
 <%= f.text_field :price %>円
+</div>
+</div>
+</div>
 
-<p>販売ステータス</p>
+<div class="form-grop mt-3">
+   <div class="row justify-content-start">
+     <lavel for="renre" class="col-sm-6">販売ステータス</lavel>
 <label><%= f.radio_button :is_active, "true" %>販売中</label>
 <label><%= f.radio_button :is_active, "false" %>販売停止中</label>
+</div>
+</div>
+<div class="form-grop mt-5 text-center">
+  <%= f.submit '新規登録', class: "btn btn-success" %>
+  </div>
 
-
-<h3><%= f.submit '新規登録' %><h3>
-  
 <% end %>
+</div>
+</div>
+</div>
+</main>
