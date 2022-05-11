@@ -1,33 +1,38 @@
 Rails.application.routes.draw do
 
   namespace :public do
-    resources :homes, only: [:top, :about]
+    get 'homes/top'
+    get 'homes/about'
+  end
+  namespace :public do
+  resources :homes, only: [:top, :about]
   end
   
   namespace :admin do
     resources :orders, only: [:show, :update]
   end
-  
+
   namespace :admin do
     get 'homes/top'
   end
+  
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end
-  
+
   namespace :admin do
     resources :items, only: [:index, :create, :new, :show, :edit, :update, :destroy]
   end
-  
+
   namespace :admin do
    resources :genres, only: [:index, :create, :edit, :update, :destroy]
   end
-  
+
   devise_for :admin,  skip: [:registrations, :passwords], controllers: {
    sessions: "admin/sessions"
   }
-  
-  
+
+
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'

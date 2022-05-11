@@ -1,18 +1,45 @@
-<h2>商品詳細</h2>
-<p>ジャンル</p>
+<main>
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+  <h4 class="text-black bg-secondary  mt-5">商品詳細</h4>
+
+<div class="mt-5">
+      <%= image_tag @item.image, size: "300" %>
+      </div>
+ </div>
+<div class="col-lg-8">
+  <div class="form-grop">
+<labal for="name" class="">商品名</labal>
+  <%= @item.name %>
+</div>
+ 
+
+ 
+<label for="introduction" class="">商品説明</label>
+<div class="">
+  <%= @item.introduction %>
+
+
+<label for="introduction" class="">ジャンル</label>
+
 <%= @item.genre.name %>
-<p>商品画像</p>
-<%= image_tag @item.image, size: "200*200" %>
-<p>商品名</p>
-<%= @item.name %>
-<p>商品説明</p>
-<%= @item.introduction %>
-<p>税込み価格(税抜き価格)</p>
-<%= @item.price %>円
-<p>販売ステータス</p>
-<% if @item.is_active == true %>
+
+
+<label for="introduction" class="">税込価格（税抜価格）</label>
+  <%= @item.price %>円
+
+
+
+
+<label for="introduction" class="">販売ステータス</label>
+ <% if @item.is_active == true %>
 <p>販売中</p>
 <% else %>
 <p>販売停止中</p>
 <% end %>
 <%= link_to "編集", edit_admin_item_path(@item.id) %>
+</div>
+</div>
+</div>
+</main>
