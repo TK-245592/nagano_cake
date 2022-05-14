@@ -1,13 +1,21 @@
 Rails.application.routes.draw do
 
+
+
+
   namespace :public do
-    get 'homes/top'
-    get 'homes/about'
+   resources :addresses, only: [:index, :edit, :create]
   end
+  namespace :public do
+     get 'customers/unsubscribe' => "customers#unsubscribe", as: "unsubscribe"
+     patch 'customers/withdraw' => "customers#withdraw", as: "withdraw"
+     resources :customers, only: [:show, :edit, :update]
+  end
+
   namespace :public do
   resources :homes, only: [:top, :about]
   end
-  
+
   namespace :admin do
     resources :orders, only: [:show, :update]
   end
@@ -15,7 +23,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
   end
-  
+
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end

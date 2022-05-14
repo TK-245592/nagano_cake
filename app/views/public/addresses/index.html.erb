@@ -1,0 +1,44 @@
+<main>
+    <div class="container">
+  <div class="row">
+    <div class="col-lg-4　text-center">
+  <h4 class="text-black bg-secondary  mt-5">配送先登録/一覧</h4>
+     </div>
+       </div>
+       
+     <%= form_with model: @address, url: public_addresses_path, method: :post do |f| %>
+     <div class="form-gruop">
+       
+     <div class="row">
+       <div class="col">
+         <label for="postal_code" class="form-label">郵便番号（ハイフンなし）</label>
+       </div>
+         <div class="col">
+           <%= f.text_field :postal_code %>
+         </div>
+     
+         <div class="col">
+         <label for="postal_code" class="form-label">住所</label>
+       </div>
+         <div class="col">
+           <%= f.text_area :address %>
+         </div>
+     
+         <div class="col">
+         <label for="postal_code" class="form-label">宛先</label>
+       </div>
+         <div class="col">
+           <%= f.text_field :name %>
+         </div>
+     </div>
+     
+     </div>
+     <% end %>
+     
+     <table class="table"></table>
+
+     
+   
+     </div>
+     </main>
+
