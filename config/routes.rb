@@ -4,8 +4,12 @@ Rails.application.routes.draw do
 
 
   namespace :public do
-   resources :addresses, only: [:index, :edit, :create]
+    resources :items, only: [:index, :show]
   end
+  namespace :public do
+   resources :addresses, only: [:index, :edit, :create, :update]
+  end
+
   namespace :public do
      get 'customers/unsubscribe' => "customers#unsubscribe", as: "unsubscribe"
      patch 'customers/withdraw' => "customers#withdraw", as: "withdraw"

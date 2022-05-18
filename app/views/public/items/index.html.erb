@@ -1,0 +1,25 @@
+<main>
+    <div class="container">
+  <div class="row">
+    <div class="col-lg-4　text-center">
+  <h4 class="text-black bg-secondary  mt-5">商品一覧（全<%= @item %>件） </h4>
+     </div>
+     </div>
+     <% @items.each do |item| %>
+     <div class="list-group-horizontal">
+    <div class="row">
+      <div class="col">
+        <%= link_to  public_item_path(item.id) do %>
+        <%= image_tag item.image %>
+      </div>
+       <% end %>
+       
+      <div class="col"></div>
+        <%= item.name %>
+      </div>
+      <div class="col">
+        ￥<%= item.price %>
+      </div>
+     </div>
+     <% end %>
+     </div>

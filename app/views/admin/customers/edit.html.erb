@@ -4,7 +4,7 @@
 <p>会員ID</p>
 <%= @customer.id %>
 
-<%= form_with model: @customer, url: admin_customer_path(@customer.id), methoud: :patch do |f| %>
+<%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
 <p>氏名</p>
 <%= f.text_field :last_name %><%= f.text_field :first_name %>
 <p>フリガナ</p>
