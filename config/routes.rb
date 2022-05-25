@@ -4,7 +4,16 @@ Rails.application.routes.draw do
 
 
   namespace :public do
-    resources :items, only: [:index, :show]
+    resources :orders, only: [:new, :index, :show, :create]
+  end
+  
+  namespace :public do
+    delete 'cart_items/destroy_all' => "cart_items#destroy_all", as: "destroy_all"
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+  end
+
+  namespace :public do
+    resources :items, only: [:index, :show,]
   end
   namespace :public do
    resources :addresses, only: [:index, :edit, :create, :update]
@@ -17,7 +26,8 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-  resources :homes, only: [:top, :about]
+  get "homes/top"
+  get "homes/about"
   end
 
   namespace :admin do

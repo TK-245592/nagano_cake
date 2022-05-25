@@ -3,13 +3,13 @@
 <div class="text-center mt-5 col-lg-2">
   <h4 class="text-black bg-secondary ">商品一覧</h4>
 </div>
-
+<div class="col mb-3">
 <div class=" text-right">
 <%= link_to  new_admin_item_path, method: :get, class: "btn btn-light text-secondary fa-15" do %>
 <i class="fas fa-plus-circle"></i>
 <% end %>
 </div>
-
+</div>
 
 
 <table class="table">
@@ -17,7 +17,7 @@
     <tr>
       <th>商品ID</th>
       <th>商品名</th>
-       <th>税抜き価格</th>
+       <th>税抜価格</th>
         <th>ジャンル</th>
          <th>販売ステータス</th>
     </tr>
@@ -29,10 +29,10 @@
     <%= item.id %>
     </td>
    <td>
-     <%= link_to item.name, admin_item_path(item.id), class: "text-dark border-bottom" %>
+     <%= link_to item.name, admin_item_path(item.id), class: "text-dark" %>
      </td>
     <td>
-      <%= item.price %>円
+      <%= item.price.to_s(:delimited) %>
       </td>
      <td>
        <%= item.genre.name %>

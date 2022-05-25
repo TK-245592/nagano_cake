@@ -1,0 +1,53 @@
+<main>
+    <div class="container">
+  <div class="row">
+    <div class="col-lg-4 text-center">
+  <h4 class="text-black bg-secondary  mt-5">ショッピングカート</h4>
+  </div>
+  <div class="col">
+<%= link_to "カートを空にする",  public_destroy_all_path, method: :delete, class: "btn btn-danger" %>
+</div>
+     </div>
+     <table class="table">
+       <thead>
+         <th>商品名</th>
+         <th>単価（税込）</th>
+          <th>数量</th>
+           <th>小計</th>
+            <th></th>
+       </thead>
+       <tbody>
+
+         <% @cart_items.each do |cart_item| %>
+          <%=form_with model: cart_item, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
+         <tr>
+           <td><%= cart_item.item.name %></td>
+           <td><%= cart_item.item.with_tax_price %></td>
+           <td> <%= f.select :amount, *[1..10] %>
+                <%= f.submit "変更", class: "btn btn-success" %></td>
+           <td><%= cart_item.subtotal %></td>
+          <td> <%= link_to "削除する",  public_cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger"%> </td>
+          <% @total += cart_item.subtotal %>
+         </tr>
+          <% end %>
+         <% end %>
+       </tbody>
+
+
+
+     </table>
+
+     <div class="row">
+       <div class="col">
+         <%= link_to "買い物を続ける", public_homes_top_path, class: "btn btn-primary btn-lg" %>
+       </div>
+       <div class="col">
+         <p>合計金額<%= @total %></p>
+       </div>
+     </div>
+
+     <div class="col">
+       <%= link_to "情報入力に進む", new_public_order_path, class: "btn btn-success btn-lg" %>
+     </div>
+
+     </div>
