@@ -1,5 +1,13 @@
+<main>
+    <div class="container">
 
-<h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h1>
+  <div class="row ml-5">
+    <div class="col-lg-4 text-center">
+  <h4 class="text-black bg-secondary  mt-5 mb-5"><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h4>
+  </div>
+  </div>
+
+<h1></h1>
 
 <p>会員ID</p>
 <%= @customer.id %>

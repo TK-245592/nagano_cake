@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
 
   namespace :public do
+    post "order/confirm" => "orders#confirm", as: "confirm"
     resources :orders, only: [:new, :index, :show, :create]
   end
-  
+
   namespace :public do
     delete 'cart_items/destroy_all' => "cart_items#destroy_all", as: "destroy_all"
     resources :cart_items, only: [:index, :create, :update, :destroy]
