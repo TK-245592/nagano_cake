@@ -29,7 +29,7 @@
         </div>
       <div class="col">
       <%= f.radio_button :select_address, 0 %>
-      <%= f.label :select_address_1, "ご自身の住所" %>
+      <%= f.label :select_address_0, "ご自身の住所" %>
       </div>
       <div class="col">
         <%= @customer_address_1 %>
@@ -37,14 +37,14 @@
 
       <div class="col">
       <%= f.radio_button :select_address, 1 %>
-      <%= f.label :select_address_2, "登録済住所から選択" %>
+      <%= f.label :select_address_1, "登録済住所から選択" %>
       </div>
       <div class="col">
       <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
       </div>
       <div class="col">
       <%= f.radio_button :select_address, 2 %>
-      <%= f.label :select_address_3, "新しいお届け先" %>
+      <%= f.label :select_address_2, "新しいお届け先" %>
       </div>
       <div class="col">
       <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
