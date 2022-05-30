@@ -17,16 +17,19 @@
   </thead>
   <tbody>
     <% @order.each do |order| %>
+    <% @order_details.each do |order_detail| %>
     <tr>
-      <th><%= order.created_at. strftime('%Y/%m/%d')</th>
-      <th> 
-          "〒"<%= order.postal_code %>
-          <%= order.address %>
+      <th><%= order.created_at. strftime('%Y/%m/%d') %></th>
+      <th>〒<%= order.postal_code %><br>
+          <%= order.address %><br>
           <%= order.name %>
       </th>
-      <th><%= order.cart_items.item_name %></th>
-      <th></th>
-      <th></th>
+      <th><%= order_detail.item.name %></th>
+      <th><%= order.billing_amount %></th>
+      <th><%= order.order_status %></th>
+      <th><%= link_to "表示する", public_order_path(order.id) , class: "btn btn-primary" %></th>
     </tr>
+    <% end %>
+    <% end %>
   </tbody>
 </table>
