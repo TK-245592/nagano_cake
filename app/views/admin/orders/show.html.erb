@@ -1,15 +1,16 @@
 <h1>注文履歴詳細</h1>
 <P>購入者</P>
-<%= @order.customer.last_name %><%= @order.customer.first_name %>
+<%= @order.customer.last_name + @order.customer.first_name %>
 <p>注文日</p>
 <%= @order.created_at.strftime('%Y/%m/%d') %>
 <p>配送先</p>
-<%= @order.postal_cade %><%= @order.address %><%= @order.name %>
+<%= @order.postal_cade + @order.address + @order.name %>
 <p>支払い方法</p>
-<%= @order.method_of_payment %>
-
+<%= @order.method_of_payment_i18n %>
 <%= form_with model: @order, url: admin_order_path, methoud :patch do |f| %>
 <p>注文ステータス</p>
+<%= f.select :order_status, options_from_collection_for_select(Order.all, :key, :order_status) %>
+
 
 
 <% end %>
@@ -22,6 +23,7 @@
 <%= order_detail.quantity %>
 <p>小計</p>
 
+.
 <p>制作ステータス</p>
 <% end %>
 

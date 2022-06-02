@@ -40,7 +40,7 @@ class Public::OrdersController < ApplicationController
       @cart_items = current_customer.cart_items
       @cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
-      @order_detail.order_id = cart_item.id
+      @order_detail.order_id = @order.id
       @order_detail.item_id = cart_item.item_id
       @order_detail.quantity = cart_item.amount
       @order_detail.price = cart_item.item.with_tax_price
@@ -59,6 +59,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_detail = @order.order_details
   end
 
    private

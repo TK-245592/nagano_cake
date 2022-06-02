@@ -19,15 +19,15 @@
     <% @order.each do |order| %>
     <% @order_details.each do |order_detail| %>
     <tr>
-      <th><%= order.created_at. strftime('%Y/%m/%d') %></th>
-      <th>〒<%= order.postal_code %><br>
+      <td><%= order.created_at. strftime('%Y/%m/%d') %></td>
+      <td>〒<%= order.postal_code %><br>
           <%= order.address %><br>
           <%= order.name %>
-      </th>
-      <th><%= order_detail.item.name %></th>
-      <th><%= order.billing_amount %></th>
-      <th><%= order.order_status %></th>
-      <th><%= link_to "表示する", public_order_path(order.id) , class: "btn btn-primary" %></th>
+      </td>
+      <td><%= order_detail.item.name %></td>
+      <td><%= order.billing_amount %></td>
+      <td><%= order.order_status %></td>
+      <td><%= link_to "表示する", public_order_path(order.id) , class: "btn btn-primary" %></td>
     </tr>
     <% end %>
     <% end %>
