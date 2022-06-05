@@ -9,45 +9,45 @@
 
   
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-4">
   <%= image_tag @item.image %>
   </div>
 
   
 <div class="row">
-<div class="col-sm-4">
+<div class="col-4">
 <label for="name">商品名</labal>
 </div>
-<div class="col-sm-8">
+<div class="col-8">
   <%= @item.name %>
 </div>
  
  
- <div class="col-sm-4">
+ <div class="col-4">
    <label for="introduction">商品説明</label>
  </div>
-<div class="col-sm-8">
+<div class="col-8">
   <%= @item.introduction %>
 </div>
 
- <div class="col-sm-4">
+ <div class="col-4">
    <label for="genre">ジャンル</label>
  </div>
-<div class="col-sm-8">
+<div class="col-8">
    <%= @item.genre.name %>
 </div>
 
- <div class="col-sm-4">
+ <div class="col-4">
    <label for="introduction">税込価格（税抜価格）</label>
  </div>
-<div class="col-sm-8">
+<div class="col-8">
  <%= @item.with_tax_price.to_s(:delimited) %>（<%= @item.price.to_s(:delimited) %>）円
 </div>
 
- <div class="col-sm-4">
+ <div class="col-4">
    <label for="introduction">販売ステータス</label>
  </div>
-<div class="col-sm-8">
+<div class="col-8">
   <% if @item.is_active == true %>
   <div class="text-success font-weight-bold">
   販売中

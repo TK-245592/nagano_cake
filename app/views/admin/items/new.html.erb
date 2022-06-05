@@ -5,18 +5,18 @@
   </div>
 
 
-<div lcass="form-horizontal" role="form">				
-<%= form_with model: @item, url: admin_items_path,  method: :post do |f| %>				
-<div class="form-grop mt-5">				
-<div class="row justify-content-center">				
-<div class="col-sm-2">				
-<label for="image" class="col-form-label">商品画像</label>				
-</div>				
-<div class="col-sm-7">				
-<%= f.file_field :image, accept: 'image/*' %>				
-</div>				
-</div>				
-</div>				
+<div lcass="form-horizontal" role="form">
+<%= form_with model: @item, url: admin_items_path,  method: :post do |f| %>
+<div class="form-grop mt-5">
+<div class="row justify-content-center">
+<div class="col-sm-2">
+<label for="image" class="col-form-label">商品画像</label>
+</div>
+<div class="col-sm-7">
+<%= f.file_field :image, accept: 'image/*' %>
+</div>
+</div>
+</div>
 
 
 <div class="form-grop mt-3">
@@ -35,8 +35,8 @@
      <div class="col-sm-2">
      <lavel for="introduction" class="col-form-label">商品説明</lavel>
      </div>
-      <div class="col-sm-7">
-<%= f.text_area(:introduction, placeholder: "ここに説明文を記述します", size: "40" )  %>
+      <div class="col-7">
+<%= f.text_area(:introduction, placeholder: "ここに説明文を記述します", size: "40*30" )  %>
 </div>
 </div>
 </div>
@@ -74,11 +74,11 @@
 </div>
 </div>
 </div>
-
-<div class="form-grop mt-5 text-center">
+<div class="row justify-content-center">
+<div class="col-4">
   <%= f.submit '新規登録', class: "btn btn-success btn-lg"%>
   </div>
-
+</div>
 <% end %>
 </div>
 </div>

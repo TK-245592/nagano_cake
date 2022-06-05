@@ -4,29 +4,64 @@
 <p>注文日</p>
 <%= @order.created_at.strftime('%Y/%m/%d') %>
 <p>配送先</p>
-<%= @order.postal_cade + @order.address + @order.name %>
+<%= @order.postal_code + @order.address + @order.name %>
 <p>支払い方法</p>
 <%= @order.method_of_payment_i18n %>
-<%= form_with model: @order, url: admin_order_path, methoud :patch do |f| %>
+
+<%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
+
 <p>注文ステータス</p>
-<%= f.select :order_status, options_from_collection_for_select(Order.all, :key, :order_status) %>
+<%= f.select :order_status, Order.order_statuses_i18n.keys, {}, class: "order_status" %>
 
-
-
-<% end %>
-<%= @order_details.each do |order_detail| %>
-<p>商品名</p>
-<%= order_detail.item.name %>
-<p>単価（税込）</p>
-<%= order_detail.price %>
-<p>数量</p>
-<%= order_detail.quantity %>
-<p>小計</p>
-
-.
-<p>制作ステータス</p>
+<%= f.submit "更新", class: "btn btn-success" %>
 <% end %>
 
-<p>商品合計</p><%= order_detail.all.sum(:price) %>円
-<p>送料</p>
-<p>請求金額合計</p>
+<table>
+  <thead>
+    <th>商品名</th>
+    <th>単価（税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th>製作ステータス</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @order_details.each do |order_detail| %>
+    <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch do |f| %>
+    <tr>
+      <td><%= order_detail.item.name %></td>
+      <td><%= order_detail.price %></td>
+      <td><%= order_detail.quantity %></td>
+      <td><%= order_detail.price * order_detail.quantity %></td>
+      <td><%= f.select :production_status, OrderDetail.production_statuses_i18n.keys, {}, class: "production_status" %></td>
+      <td><%= f.submit "更新", class: "btn btn-success" %></td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="col">
+    商品合計
+  </div>
+  <div class="col">
+    <%= @order.billing_amount %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    送料
+  </div>
+  <div class="col">
+    <%= @order.shipping_cost %>
+  </div>
+</div>
+<div class="row">
+<div class="col">
+  請求金額合計
+</div>
+<div class="col">
+  <%= @order.billing_amount + @order.shipping_cost %>
+</div>
+</div>

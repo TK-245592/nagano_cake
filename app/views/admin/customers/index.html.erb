@@ -5,10 +5,11 @@
   <h4 class="text-black bg-secondary  mt-5 mb-5">会員一覧</h4>
   </div>
   </div>
-
-<table>
+  <div class="row justify-content-center">
+<div class="col-10">
+<table class="table">
   <thead>
-    <tr>
+    <tr class="table-active">
       <th>会員ＩＤ</th>
       <th>氏名</th>
       <th>メールアドレス</th>
@@ -20,7 +21,7 @@
   <% @customers.each do |customer| %>
   <tr>
     <td><%= customer.id %></td>
-    <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id), class: "text-dark" %></td>
+    <td><u><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id), class: "text-dark" %></u></td>
     <td><%= customer.email %></td>
 
     <% if customer.is_active == true %>
@@ -36,6 +37,8 @@
   </tbody>
 <% end %>
 </table>
+</div>
+</div>
 <%= paginate @customers %>
 </div>
 </main>

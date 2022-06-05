@@ -6,7 +6,7 @@
   </div>
   </div>
   
-
+<div class="row">
 <div class="col-lg-2">
 <%=form_with model: @genre, url: 'genres', method: :post do |f| %>
 <label for="genre">ジャンル名</label>
@@ -18,13 +18,15 @@
 <%= f.submit '新規登録', class: "btn btn-success" %>
 <% end %>
 </div>
-
+</div>
 
 <div class="col-lg-5 mt-5">
 <table class="table">
   <thead>
+    <tr class="table-active">
     <th>ジャンル</th>
     <th></th>
+    </tr>
   </thead>
   <tbody>
     <% @genres.each do |genre| %>

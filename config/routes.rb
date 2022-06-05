@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+   resources :order_detail, only: [:update]
+  end
+
+  namespace :admin do
     resources :orders, only: [:show, :update]
   end
 
