@@ -1,67 +1,105 @@
-<h1>注文履歴詳細</h1>
-<P>購入者</P>
-<%= @order.customer.last_name + @order.customer.first_name %>
-<p>注文日</p>
-<%= @order.created_at.strftime('%Y/%m/%d') %>
-<p>配送先</p>
-<%= @order.postal_code + @order.address + @order.name %>
-<p>支払い方法</p>
-<%= @order.method_of_payment_i18n %>
+<main>
+<div class="container">
+  <div class="text-center mt-5 col-lg-2">
+    <h4 class="text-black bg-secondary">注文履歴詳細</h4>
+  </div>
 
+<div class="row mb-2">
+  <div class="col-2">
+    購入者
+  </div>
+  <div class="col">
+    <u><%= @order.customer.last_name + @order.customer.first_name %></u>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col-2">
+    注文日
+  </div>
+  <div class="col">
+    <%= @order.created_at.strftime('%Y/%m/%d') %>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col-2">
+    配送先
+  </div>
+  <div class="col">
+    <%= @order.postal_code + @order.address %><br>
+    <%= @order.name %>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col-2">
+    支払い方法
+  </div>
+  <div class="col">
+    <%= @order.method_of_payment_i18n %>
+  </div>
+</div>
 <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
-
-<p>注文ステータス</p>
-<%= f.select :order_status, Order.order_statuses_i18n.keys, {}, class: "order_status" %>
-
-<%= f.submit "更新", class: "btn btn-success" %>
+<div class="row mb-4 ">
+  <div class="col-2">
+    注文ステータス
+  </div>
+  <div class="col-3">
+    <%= f.select :order_status, Order.order_statuses_i18n.keys, {}, class: "order_status" %>
+  </div>
+  <div class="col">
+    <%= f.submit "更新", class: "btn btn-success" %>
+  </div>
+</div>
 <% end %>
 
-<table>
+<div class="container">
+<div class="row">
+  <div class="col-8">
+<table class="table">
   <thead>
+    <tr class="table-active">
     <th>商品名</th>
     <th>単価（税込）</th>
     <th>数量</th>
     <th>小計</th>
     <th>製作ステータス</th>
     <th></th>
+    </tr>
   </thead>
   <tbody>
     <% @order_details.each do |order_detail| %>
-    <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch do |f| %>
     <tr>
       <td><%= order_detail.item.name %></td>
       <td><%= order_detail.price %></td>
       <td><%= order_detail.quantity %></td>
       <td><%= order_detail.price * order_detail.quantity %></td>
+     <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch do |f| %>
       <td><%= f.select :production_status, OrderDetail.production_statuses_i18n.keys, {}, class: "production_status" %></td>
       <td><%= f.submit "更新", class: "btn btn-success" %></td>
+       <% end %>
     </tr>
-    <% end %>
     <% end %>
   </tbody>
 </table>
+</div>
 
-<div class="row">
-  <div class="col">
+
+<div class="col-4 align-self-end">
+  <div class="col-12 mb-2">
     商品合計
-  </div>
-  <div class="col">
     <%= @order.billing_amount %>
-  </div>
+    </div>
+      <div class="col-12 mb-2">
+           送料
+          <%= @order.shipping_cost %>
+      </div>
+      <div class="col-12 mb-2">
+          請求金額合計
+        <%= @order.billing_amount + @order.shipping_cost %>
+      </div>
+      </div>
 </div>
-<div class="row">
-  <div class="col">
-    送料
-  </div>
-  <div class="col">
-    <%= @order.shipping_cost %>
-  </div>
-</div>
-<div class="row">
-<div class="col">
-  請求金額合計
-</div>
-<div class="col">
-  <%= @order.billing_amount + @order.shipping_cost %>
 </div>
 </div>

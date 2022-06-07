@@ -1,18 +1,74 @@
-<h2>商品編集</h2>
+<main>
+    <div class="container">
+  <div class="row ml-2">
+    <div class="col-lg-4 text-center">
+  <h4 class="text-black bg-secondary  mt-5 mb-5">商品編集</h4>
+  </div>
+  </div>
+  
+<div class="container text-center">
 <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-<p>商品画像</p>
-<%= f.file_field :image, placeholder: "商品画像", accept: "image/*" %>
-<p>商品名</p>
-<%= f.text_field :name %>
-<p>商品説明</p>
-<%= f.text_area :introduction %>
-<p>ジャンル</p>
-<%= f.collection_select :genre_id, @genres, :id, :name,  {prompt: "選択してください"} %>
-<p>税抜き価格</p>
-<%= f.text_field :price %>円
-<p>販売ステータス</p>
+<div class= "row justify-content-center mb-4">
+    <div class="col-2">
+        商品画像
+    </div>
+    <div class="col-3">
+        <%= f.file_field :image, placeholder: "商品画像", accept: "image/*" %>
+    </div>
+</div>
+
+<div class="row justify-content-center mb-4">
+<div class="col-2">
+    商品名
+</div>
+<div class="col-3">
+    <%= f.text_field :name %>
+</div>
+</div>
+
+<div class="row justify-content-center mb-4 ">
+    <div class="col-2">
+        商品説明
+    </div>
+    <div class="col-3">
+        <%= f.text_area :introduction %>
+    </div>
+</div>
+
+<div class="row justify-content-center mb-4 ">
+    <div class="col-2">
+        ジャンル
+    </div>
+    <div class="col-3">
+        <%= f.collection_select :genre_id, @genres, :id, :name,  {prompt: "選択してください"} %>
+    </div>
+</div>
+
+<div class="row justify-content-center mb-4 ">
+    <div class="col-2">
+        税抜き価格
+    </div>
+    <div class="col-3">
+        <%= f.text_field :price %>円
+    </div>
+</div>
+
+<div class="row justify-content-center mb-4 ">
+    <div class="col-2">
+        販売ステータス
+    </div>
+    <div class="col-3">
 <label><%= f.radio_button :is_active, "true" %>販売中</label>
 <label><%= f.radio_button :is_active, "false" %>販売停止中</label>
-<h3><%= f.submit "変更を保存" %></h3>
-<% end %>
+    </div>
+</div>
+
+<div class="row justify-content-center mb-4 ">
+    <div class="col">
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
+    </div>
+    <% end %>
+</div>
+</div>
+
 

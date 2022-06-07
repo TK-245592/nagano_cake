@@ -20,9 +20,9 @@
 
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              
-             
-              
+
+
+
 
               <% if admin_signed_in? %>
 
@@ -42,12 +42,12 @@
                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,  class:"nav-link text-dark" %>
               </li>
 
-             <% elsif customer_signed_in? %> 
-             
+             <% elsif customer_signed_in? %>
+
                  <li class="nav-item">
-                <%= link_to "マイページ", class: "nav-link text-dark" %>
+                <%= link_to "マイページ", public_customer_path(current_customer), class: "nav-link text-dark" %>
               </li>
-              
+
               <li class="nav-item">
                 <%= link_to "商品一覧", public_items_path, class: "nav-link text-dark" %>
               </li>
@@ -58,8 +58,8 @@
                <li class="nav-item">
                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link text-dark" %>
               </li>
-             
-             
+
+
              <% else %>
 
               <li class="nav-item">
@@ -69,7 +69,7 @@
                <li class="nav-item">
                 <%= link_to "商品一覧", public_items_path, class: "nav-link text-dark" %>
               </li>
-              
+
                <li class="nav-item">
                 <%= link_to "新規登録", new_customer_registration_path, class: "nav-link text-dark" %>
               </li>
