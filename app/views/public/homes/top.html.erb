@@ -1,13 +1,45 @@
-
-<h4>ようこそ、ながのＣＡＫＥへ！<br>
+<main>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mb-2">
+  <div class="card">
+<%= image_tag "img.jpg", class:"card-img img-fluid" %>
+<div class="card-img-overlay ">
+  <div class="card text-bg-light">
+<h2 class="card-text">ようこそ、ながのＣＡＫＥへ！<br>
 このサイトは、ケーキ販売のＥＣサイトになります。<br>
 会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。</h4>
+購入には会員登録が必要になります。</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-<H4>新着商品</H4>
+<div class="row">
+  <div class="col mb-4">
+    <h2>新着情報</h2>
+</div>
+</div>
+<div class="row">
 <% @items.each do |item| %>
-<%= image_tag item.image, size:"300" %>
+<div class="col">
+<%= image_tag item.image %>
+<div class="col">
 <%= item.name %>
-<%= item.price %>
+</div>
+<div class="col">
+￥<%= item.price %>
+</div>
+</div>
 <% end %>
-<%= link_to "全ての商品を見る" %>
+
+</div>
+<div class="row justify-content-end">
+  <div class="col-2">
+   <u><%= link_to "全ての商品を見る>", public_items_path %></u>
+  </div>
+</div>
+
+</div>
+</main>
